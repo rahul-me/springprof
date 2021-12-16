@@ -2,8 +2,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.ricky</groupId>
-    <artifactId>myfancypdfinvoices</artifactId>
+    <groupId>com.rvcode</groupId>
+    <artifactId>pdfinvo</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <packaging>jar</packaging>
@@ -20,7 +20,6 @@
             <artifactId>tomcat-embed-core</artifactId>
             <version>9.0.54</version>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -35,7 +34,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -48,8 +46,9 @@
                         </goals>
                         <configuration>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.ricky.myfancypdfinvoices.ApplicationLauncher</mainClass>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.rvcode.pdfinvo.ApplicationLauncher</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
