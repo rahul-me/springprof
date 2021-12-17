@@ -1,6 +1,5 @@
 package com.rvcode.pdfinvo.service;
 
-import com.rvcode.pdfinvo.context.Application;
 import com.rvcode.pdfinvo.model.Invoice;
 import com.rvcode.pdfinvo.model.User;
 
