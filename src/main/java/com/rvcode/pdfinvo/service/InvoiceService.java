@@ -29,6 +29,12 @@ public class InvoiceService {
         System.out.println("Fetching pdf invoice from S3...");
     }
 
+    @PostConstruct // It is not mandatory to define public method for PostConstruct to work. Like this you can
+    // declare private also
+    private void cacheData(){
+        System.out.println("caching data from database..");
+    }
+
     @PreDestroy
     public void shutdown() {
         System.out.println("Deleting downloaded templates...");
