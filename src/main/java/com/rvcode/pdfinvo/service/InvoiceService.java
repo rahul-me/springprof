@@ -12,10 +12,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class InvoiceService {
 	
-	@Autowired
     private UserService userService;
+    
+    
 
-    List<Invoice> invoices = new CopyOnWriteArrayList<>();
+    /**
+	 * @param userService the userService to set
+	 */
+    @Autowired
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
+	List<Invoice> invoices = new CopyOnWriteArrayList<>();
 
     public List<Invoice> findAll(){
         return invoices;
