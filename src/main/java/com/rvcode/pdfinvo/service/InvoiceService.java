@@ -6,6 +6,9 @@ import com.rvcode.pdfinvo.model.User;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,10 +18,18 @@ public class InvoiceService {
     private UserService userService;
     
     
-
-    /**
-	 * @param userService the userService to set
-	 */
+    @PostConstruct
+    public void init() {
+    	System.out.println("Fetching PDF template from S3..");
+    	// To download from S3 and save locally
+    }
+    
+    @PreDestroy
+    public void shutdown() {
+    	System.out.println("Deleting downloaded templates");
+    	// TODO actual deletion of downloaded templates
+    }
+    
     @Autowired
 	public void setUserService(UserService userService) {
 		this.userService = userService;
