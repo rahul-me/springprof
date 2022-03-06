@@ -6,6 +6,9 @@ import com.rvcode.pdfinvo.model.User;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class InvoiceService {
 
     private final UserService userService;
