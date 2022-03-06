@@ -6,16 +6,14 @@ import com.rvcode.pdfinvo.model.User;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class InvoiceService {
-
-    private final UserService userService;
-
-    public InvoiceService(UserService userService){
-        this.userService = userService;
-    }
+	
+	@Autowired
+    private UserService userService;
 
     List<Invoice> invoices = new CopyOnWriteArrayList<>();
 
