@@ -1,22 +1,27 @@
 package com.rvcode.pdfinvo.service;
 
-import com.rvcode.pdfinvo.model.Invoice;
-import com.rvcode.pdfinvo.model.User;
-
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import com.rvcode.pdfinvo.model.Invoice;
+import com.rvcode.pdfinvo.model.User;
 
 @Component
 public class InvoiceService {
 	
     private UserService userService;
+    private final String cdnUrl;
     
+    public InvoiceService(UserService userService,@Value("${cdn.url}") String cdnUrl) {
+    	this.userService = userService;
+    	this.cdnUrl = cdnUrl;
+    }
     
     @PostConstruct
     public void init() {
@@ -30,7 +35,6 @@ public class InvoiceService {
     	// TODO actual deletion of downloaded templates
     }
     
-    @Autowired
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
@@ -47,7 +51,7 @@ public class InvoiceService {
             throw new IllegalStateException();
         }
 
-        Invoice inv = new Invoice(userId, amount, "http://www.africau.edu/images/default/sample.pdf");
+        Invoice inv = new Invoice(userId, amount, cdnUrl+"/images/default/sample.pdf");
         invoices.add(inv);
         return inv;
     }
