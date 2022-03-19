@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rvcode.pdfinvo.dto.InvoiceDto;
 import com.rvcode.pdfinvo.model.Invoice;
 import com.rvcode.pdfinvo.service.InvoiceService;
 
@@ -24,8 +26,8 @@ public class MyFancyPdfInvoicesController {
 		return invoiceService.findAll();
 	}
 	
-	@PostMapping("/invoices/{userId}/{amount}")
-	public Invoice createInvoice(@PathVariable String userId, @PathVariable Integer amount) {
-		return invoiceService.create(userId, amount);
+	@PostMapping("/invoices")
+	public Invoice createInvoice(@RequestBody InvoiceDto invoice) {
+		return invoiceService.create(invoice.getUserId(), invoice.getAmount());
 	}
 }
