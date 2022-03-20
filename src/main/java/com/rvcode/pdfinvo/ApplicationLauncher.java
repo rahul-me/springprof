@@ -10,7 +10,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
-import com.rvcode.pdfinvo.context.PdfInvoicesApplicationConfiguration;
+import com.rvcode.pdfinvo.context.ApplicationConfiguration;
 
 public class ApplicationLauncher {
 
@@ -36,7 +36,7 @@ public class ApplicationLauncher {
 
 	public static WebApplicationContext createApplicationContext(ServletContext servletContext) {
 		AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-		ctx.register(PdfInvoicesApplicationConfiguration.class);
+		ctx.register(ApplicationConfiguration.class);
 		ctx.setServletContext(servletContext);
 		ctx.refresh();
 		ctx.registerShutdownHook();

@@ -15,7 +15,7 @@ import com.rvcode.pdfinvo.ApplicationLauncher;
 @PropertySource("classpath:/application.properties")
 @PropertySource(value = "classpath:/application-${spring.profiles.active}.properties", ignoreResourceNotFound = true)
 @EnableWebMvc
-public class PdfInvoicesApplicationConfiguration {
+public class ApplicationConfiguration {
 	
 	@Bean
 	public MethodValidationPostProcessor methodValidationPostProcessor() {
