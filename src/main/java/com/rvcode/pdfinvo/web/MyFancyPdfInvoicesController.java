@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 
@@ -30,5 +31,13 @@ public class MyFancyPdfInvoicesController {
 	@PostMapping("/invoices")
 	public Invoice createInvoice(@RequestBody InvoiceDto invoice) {
 		return invoiceService.create(invoice.getUserId(), invoice.getAmount());
+	}
+	
+	/*
+	 * If amount gets a string, spring will complain, get NumberFormatException
+	 */
+	@PostMapping("/invoices/param")
+	public Invoice createInvoice(@RequestParam("user_id") String userId, @RequestParam("amount") Integer amount) {
+		return invoiceService.create(userId, amount);
 	}
 }
