@@ -51,6 +51,11 @@
 			<version>1.18.10</version>
 			<optional>true</optional>
 		</dependency>
+		<!-- This is the reason why we can see XML format for response, 
+		without having this dependency, if we try using "Accept": "application/xml", will throw error
+		This means your application now has two converters (XML and JSON) and they have a certain order 
+		with different priorities. The XML converter has a higher default priority, that is why you are 
+		now receiving XML, instead of JSON.-->
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>

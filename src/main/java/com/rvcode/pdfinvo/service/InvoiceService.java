@@ -14,6 +14,13 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import com.rvcode.pdfinvo.model.Invoice;
 import com.rvcode.pdfinvo.model.User;
+/*
+ * @Component annotation tells spring that it should turn InvoiceService for example, into @Beans, 
+ * once it finds them, so it is a direct replacement for the @Bean method
+ * 
+ * It needs to scan your classpath, which it does not do by default. You need to enable that behavior,
+ * by adding the @ComponentScan annotation to your Spring configuration class
+ */
 
 @Component
 public class InvoiceService {
@@ -26,6 +33,9 @@ public class InvoiceService {
 		this.cdnUrl = cdnUrl;
 	}
 
+	/**
+	 * For @PostConstruct to work, you need to create a public method and give it any name you want.
+	 */
 	@PostConstruct
 	public void init() {
 		System.out.println("Fetching PDF template from S3..");
